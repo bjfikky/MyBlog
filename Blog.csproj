@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Remove="Areas\Identity\IdentityHostingStartup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Migrations\" />

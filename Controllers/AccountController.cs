@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,9 +27,10 @@ namespace Blog.Controllers
             _signInManager = signInManager;
         }
 
-        // GET: /<controller>/
-        
-        public async Task<IActionResult> Register() {
+        [HttpPost]
+        [ActionName("Register")]
+        public async Task<IActionResult> RegisterPost() 
+        {
             var result = await _userManager.CreateAsync(new ApplicationUser
             {
                 UserName = "bjfikky",
@@ -36,6 +38,23 @@ namespace Blog.Controllers
             }, "Fikky007&");
 
             return result.Succeeded ? Content("User created", "text/html") : Content("User creation failed", "text/html");
+        }
+
+        [HttpGet]
+        public IActionResult Register() 
+        {
+            return View();
+        }
+
+        public IActionResult Login(string returnUrl)
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Protected() 
+        {
+            return Content("To be protected");
         }
 
     }
