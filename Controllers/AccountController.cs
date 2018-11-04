@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Data;
+using Blog.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,16 +29,29 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        [ActionName("Register")]
-        public async Task<IActionResult> RegisterPost() 
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(Register model) 
         {
-            var result = await _userManager.CreateAsync(new ApplicationUser
+            if (ModelState.IsValid)
             {
-                UserName = "bjfikky",
-                Email = "bjfikky@yahoo.com"
-            }, "Fikky007&");
 
-            return result.Succeeded ? Content("User created", "text/html") : Content("User creation failed", "text/html");
+                var user = new ApplicationUser
+                {
+                    UserName = model.Username,
+                    Email = model.Email
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                    return RedirectToAction("Index", "Home");
+
+                foreach (var error in result.Errors) {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return View(model);
         }
 
         [HttpGet]
