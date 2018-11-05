@@ -60,6 +60,26 @@ namespace Blog.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(Login model, string returnUrl)
+        {
+            if (ModelState.IsValid) 
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                
+                ModelState.AddModelError("", "Invalid Username or Password");
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
         public IActionResult Login(string returnUrl)
         {
             return View();
