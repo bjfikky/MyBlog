@@ -46,6 +46,8 @@ namespace Blog
                 options.LoginPath = "/Account/Login";
             });
 
+            services.Configure<IdentityOptions>(options => options.User.RequireUniqueEmail = true);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
