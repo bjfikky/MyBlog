@@ -12,7 +12,7 @@ namespace Blog.Data
 {
     public class ApplicationUser : IdentityUser
     {
-
+        public ICollection<Post> Posts { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

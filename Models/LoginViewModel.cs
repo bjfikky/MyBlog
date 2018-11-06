@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Models
 {
-    public class Login
+    public class LoginViewModel
     {
         [Required]
         public string Username { get; set; }
