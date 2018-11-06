@@ -20,5 +20,7 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\Post\" />
+    <Folder Include="Data\Repository\" />
   </ItemGroup>
 </Project>
