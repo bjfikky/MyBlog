@@ -23,5 +23,9 @@ namespace Blog.Data
             : base(options)
         {
         }
+
+        public ApplicationDbContext()
+        {
+        }
     }
 }
