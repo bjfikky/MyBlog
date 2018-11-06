@@ -30,7 +30,7 @@ namespace Blog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(Register model) 
+        public async Task<IActionResult> Register(RegisterViewModel model) 
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace Blog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(Login model, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid) 
             {
