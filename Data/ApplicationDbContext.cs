@@ -17,7 +17,7 @@ namespace Blog.Data
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        DbSet<Post> Posts { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

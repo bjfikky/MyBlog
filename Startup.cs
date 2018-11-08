@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Blog.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Blog.Data.Repository;
 
 namespace Blog
 {
@@ -38,6 +39,8 @@ namespace Blog
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddTransient<IPostRepository, PostRepository>();
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -52,7 +55,7 @@ namespace Blog
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {

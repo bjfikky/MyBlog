@@ -17,6 +17,7 @@ namespace Blog.Models
         [Required]
         public DateTime DateTime { get; set; }
 
+        public string UserId { get; set; }
         public ApplicationUser User { get; set; }
     }
 }
