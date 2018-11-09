@@ -5,14 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog.Models;
+using Blog.Data.Repository;
 
 namespace Blog.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPostRepository _postRepository;
+
+        public HomeController(IPostRepository postRepository)
+        {
+            _postRepository = postRepository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var posts = _postRepository.GetPosts();
+
+            return View(posts);
         }
 
         public IActionResult About()

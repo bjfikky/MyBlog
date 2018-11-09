@@ -20,9 +20,10 @@ namespace Blog.Data.Repository
             _context.SaveChanges();
         }
 
+        // TODO: Get by page numbers
         public List<Post> GetPosts()
         {
-            return _context.Posts.ToList();
+            return _context.Posts.Include(p => p.User).ToList();
         }
     }
 }
