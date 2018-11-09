@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label asp-for="Body"></label>
-            <textarea asp-for="Body" class="form-control" rows="20"></textarea>
+            <textarea asp-for="Body" class="form-control" rows="20" id="postarea"></textarea>
             <span asp-validation-for="Body" class="text-danger"></span>
         </div>
 
@@ -25,3 +25,8 @@
     </form>
 </div>
 
+
+<script>tinymce.init({
+    selector: '#postarea'
+  });
+</script>
