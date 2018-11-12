@@ -86,6 +86,14 @@ namespace Blog.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Logout() 
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
         public IActionResult Protected() 
         {
             return Content("To be protected");

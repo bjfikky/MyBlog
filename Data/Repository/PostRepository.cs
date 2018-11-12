@@ -24,7 +24,7 @@ namespace Blog.Data.Repository
         // TODO: Sort posts with most recent first
         public List<Post> GetPosts()
         {
-            return _context.Posts.Include(p => p.User).ToList();
+            return _context.Posts.Include(p => p.User).OrderByDescending(p => p.DateTime).ToList();
         }
     }
 }

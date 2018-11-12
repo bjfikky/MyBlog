@@ -6,6 +6,8 @@ This is a Content Managment System that will allow an authenticated user to add 
 - ASP.NET CORE 2.1
 - Postgres database
 - Model-View-Controller Architecture
+- Linq
+- Repository Pattern
 - Entity Framework Core
 - Razor Pages
 - TinyMCE
