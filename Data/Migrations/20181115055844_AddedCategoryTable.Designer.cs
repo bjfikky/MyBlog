@@ -3,15 +3,17 @@ using System;
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Blog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181115055844_AddedCategoryTable")]
+    partial class AddedCategoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,8 +91,6 @@ namespace Blog.Migrations
                     b.Property<string>("Body")
                         .IsRequired();
 
-                    b.Property<int?>("CategoryId");
-
                     b.Property<DateTime>("DateTime");
 
                     b.Property<string>("Title")
@@ -100,8 +100,6 @@ namespace Blog.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -217,10 +215,6 @@ namespace Blog.Migrations
 
             modelBuilder.Entity("Blog.Models.Post", b =>
                 {
-                    b.HasOne("Blog.Models.Category")
-                        .WithMany("Posts")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("Blog.Data.ApplicationUser", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId");

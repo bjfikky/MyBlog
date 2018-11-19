@@ -22,5 +22,6 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Data\Repository\" />
+    <Folder Include="TagHelpers\" />
   </ItemGroup>
 </Project>

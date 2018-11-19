@@ -21,7 +21,6 @@ namespace Blog.Data.Repository
         }
 
         // TODO: Get by page numbers
-        // TODO: Sort posts with most recent first
         public List<Post> GetPosts()
         {
             return _context.Posts.Include(p => p.User).OrderByDescending(p => p.DateTime).ToList();
