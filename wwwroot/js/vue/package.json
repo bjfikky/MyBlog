@@ -1,0 +1,11 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "a vue package for categories",
+  "main": "category-vue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

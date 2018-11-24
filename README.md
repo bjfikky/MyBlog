@@ -11,6 +11,7 @@ This is a Content Managment System that will allow an authenticated user to add 
 - Entity Framework Core
 - Razor Pages
 - TinyMCE
+- VueJS
 
 ## Models
 1. **User** (setup using asp.net core identity)
