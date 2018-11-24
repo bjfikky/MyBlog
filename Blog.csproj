@@ -23,5 +23,6 @@
     <Folder Include="Views\Post\" />
     <Folder Include="Data\Repository\" />
     <Folder Include="TagHelpers\" />
+    <Folder Include="wwwroot\js\vue\" />
   </ItemGroup>
 </Project>
