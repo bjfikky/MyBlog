@@ -18,6 +18,7 @@ namespace Blog.Data.Repository
         public void Add(Post post) {
             _context.Posts.Add(post);
             _context.SaveChanges();
+            _context.Dispose();
         }
 
         // TODO: Get by page numbers
