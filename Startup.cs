@@ -40,6 +40,8 @@ namespace Blog
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
