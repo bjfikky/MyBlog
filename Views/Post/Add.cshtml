@@ -13,11 +13,14 @@
         </div>
 
         <div class="form-group" id="category">
-            <label>Category</label>
+            <label>Category <small class="add-category"><button type="button" data-toggle="modal" data-target="#addCategoryModal">Add Category</button></small></label>
             <select asp-for="CategoryId" class="form-control">
                 <option>- Select Category-</option>
                 <option v-for='category in categories' v-bind:value="category.id">{{category.name}} </option>   
-            </select>
+            </select> 
+
+            <partial name="_Category" />
+
         </div>
 
         <div class="form-group">
