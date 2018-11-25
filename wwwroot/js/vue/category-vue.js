@@ -1,5 +1,16 @@
 ﻿let modal = Vue.component('modal', {
-    template: '#modal-template'
+    template: '#modal-template',
+
+    props: ['test'],
+
+    methods: {
+        addCategory() {
+            this.$parent.categories.push({
+                id : 6, name : 'Swift'
+            })
+            this.$parent.test()
+        }
+    }
   })
 
 new Vue ({
@@ -17,12 +28,12 @@ new Vue ({
             {id : 4, name : 'Python'},
             {id : 5, name : 'JavaScript'},
         ],
-
-        
- 
     },
 
     methods: {
-
+        test() {
+            console.log(this.categories)
+        }
     }
+    
 })

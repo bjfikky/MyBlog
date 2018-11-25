@@ -17,7 +17,7 @@
         <div class="form-group" id="category">
             <label>Category 
                 <small class="add-category">
-                    <button type="button" id="show-modal" v-on:click="showModal = true">New Category</button>
+                    <button class="btn btn-success"  type="button" id="show-modal" v-on:click="showModal = true">New Category</button>
                     <!-- use the modal component, pass in the prop -->
                     <modal v-if="showModal" v-on:close="showModal = false">
                 </small>
