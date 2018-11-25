@@ -28,5 +28,15 @@ namespace Blog.Data
         public ApplicationDbContext()
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            // Do this before calling base to avoid error
+            builder.Entity<Category>()
+                .HasAlternateKey(c => c.Name)
+                .HasName("AlternateKey_Name");
+
+            base.OnModelCreating(builder);
+        }
     }
 }
