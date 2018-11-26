@@ -1,4 +1,6 @@
-﻿let modal = Vue.component('modal', {
+﻿import axios from 'axios';
+
+let modal = Vue.component('modal', {
     template: '#modal-template',
 
     props: ['test'],
@@ -11,7 +13,7 @@
             this.$parent.test()
         }
     }
-  })
+})
 
 new Vue ({
     el: '#category',
@@ -27,7 +29,7 @@ new Vue ({
             {id : 3, name : 'PHP'},
             {id : 4, name : 'Python'},
             {id : 5, name : 'JavaScript'},
-        ],
+        ]
     },
 
     methods: {

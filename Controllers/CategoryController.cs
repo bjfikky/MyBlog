@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Data.Repository;
+using Blog.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Blog.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/categories")]
     public class CategoryController : Controller
     {
+        private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryController(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
+
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -27,8 +36,18 @@ namespace Blog.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Category category)
         {
+
+            if (ModelState.IsValid) {
+                _categoryRepository.Add(category);
+
+                return Ok();
+            }
+
+
+
+            return BadRequest();
         }
 
         // PUT api/values/5
