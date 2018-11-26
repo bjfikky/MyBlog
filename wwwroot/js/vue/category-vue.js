@@ -1,6 +1,4 @@
-﻿import axios from 'axios';
-
-let modal = Vue.component('modal', {
+﻿let modal = Vue.component('modal', {
     template: '#modal-template',
 
     props: ['test'],
@@ -23,18 +21,18 @@ new Vue ({
     data: {
         showModal: false,
         
-        categories: [
-            {id : 1, name : 'C#'},
-            {id : 2, name : 'Java'},
-            {id : 3, name : 'PHP'},
-            {id : 4, name : 'Python'},
-            {id : 5, name : 'JavaScript'},
-        ]
+        categories: []
+    },
+
+    mounted() {
+        this.getCategories()
     },
 
     methods: {
-        test() {
-            console.log(this.categories)
+        getCategories() {
+            let categories = axios.get('/api/categories').then(response => {
+                this.categories = response.data
+            })
         }
     }
     

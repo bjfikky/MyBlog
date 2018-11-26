@@ -22,9 +22,11 @@ namespace Blog.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var categories = _categoryRepository.GetCategories();
+
+            return Ok(categories);
         }
 
         // GET api/values/5
