@@ -1,14 +1,21 @@
 ﻿let modal = Vue.component('modal', {
     template: '#modal-template',
 
-    props: ['test'],
+    data: function() {
+        return {
+            name: ''
+        }
+    },
+
+    props: ['getCategories'],
 
     methods: {
         addCategory() {
-            this.$parent.categories.push({
-                id : 6, name : 'Swift'
+            axios.post('/api/categories', {
+                name: this.name
+            }).then(() => {
+                this.$parent.getCategories()
             })
-            this.$parent.test()
         }
     }
 })
@@ -30,10 +37,10 @@ new Vue ({
 
     methods: {
         getCategories() {
-            let categories = axios.get('/api/categories').then(response => {
+            axios.get('/api/categories').then(response => {
+                this.showModal = false
                 this.categories = response.data
             })
         }
     }
-    
 })

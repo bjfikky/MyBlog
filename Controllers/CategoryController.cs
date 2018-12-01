@@ -36,7 +36,7 @@ namespace Blog.Controllers
             return "value";
         }
 
-        // POST api/values
+        // POST api/categories
         [HttpPost]
         public IActionResult Post([FromBody]Category category)
         {
